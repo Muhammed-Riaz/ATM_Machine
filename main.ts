@@ -1,4 +1,4 @@
-#! usr/bin/evn node
+#! /usr/bin/env node
 
 import inquirer from "inquirer";
 
@@ -12,12 +12,12 @@ let pinAnswer =await inquirer.prompt([{
     
   }]);
 if( pinAnswer.Balance === mypin){
-    console.log(`your pin is correct`);
+    console.log(`your pin is correct`)
     
     let operationAns =await inquirer.prompt([{
         name:"operation",
         message:"please Select a option",
-        choices:["withdraw","check current balance","get Balnce copy"],
+        choices:["withdraw","check current balance","get Balnce copy","recieved Date and time"],
         type:"list",
     }]);
     
@@ -25,30 +25,26 @@ if( pinAnswer.Balance === mypin){
     let amountAns = await inquirer.prompt([{
         name:"amount",
         message:"please enter your amount",
-        type:"number"
+        type:"number",
         
-    }])
+    }]);
     if(amountAns.amount > myBalance){
         console.log(`your withdraw limit is ${myBalance}`)
     }else{
         myBalance -= amountAns.amount;
-        console.log(`your remaining balnce is ${myBalance}`)
-    }
-   
+        console.log(`your remaining balance is ${myBalance}`)
+    };
+    
 }
 
 else if(operationAns.operation ==="check current balance"){
     console.log(`your current balance is ${myBalance}`)
-}
-else if(operationAns.operation ==="get Balnce copy"){
-    console.log("Get your balance  copy in ATM machine")
 }
 
 }
 
 else{
     console.log('incorrect pin code')
-}
-
+};
 
 
